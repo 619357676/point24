@@ -6,19 +6,18 @@ import java.util.Vector;
 
 public class Suanf {
     private static final int MAX_RAND_SEARCH_COUNT = 5040;
-    final static String[] OPS = "+ - * /".split(" ");//正则表达式，以空格分隔，存入+-*/
-
+    final static String[] OPS = "+ - * /".split(" ");
 
     public static void main(String[] args) {
-
+        System.out.println(solve24(1, 2, 3, 4));
         System.out.println(randSearcher(new int[]{1, 5, 5, 5}));
         System.out.println(randSearcher(new int[]{1, 2, 3, 4}));
         System.out.println(randSearcher(new int[]{1, 5, 7, 1}));
         System.out.println(randSearcher(new int[]{1, 1, 1, 1}));
     }
-//核心算法
-    private static List<String> randSearcher(int[] a) {//每种算法有4数字，3符号组成
-        for (int j = 0; j < 4 * 4 * 4; j++) {//共有4*4*4种算法
+
+    private static String randSearcher(int[] a) {
+        for (int j = 0; j < 4 * 4 * 4; j++) {
             String[] ops = new String[3];
             int x = j / 16;
             int y = j % 16 / 4;
@@ -27,7 +26,7 @@ public class Suanf {
             ops[1] = OPS[y];
             ops[2] = OPS[z];
 
-            List<String> exp = new Vector<>();//遍历，把将要输入的四个数数组a[]添加到exp中
+            List<String> exp = new Vector<>();
             for (Integer i : a) {
                 exp.add(Integer.toString(i));
             }
@@ -38,15 +37,17 @@ public class Suanf {
 
             int tot = 0;
             while (++tot < MAX_RAND_SEARCH_COUNT) {
-                Collections.shuffle(exp);//使用默认随机源对列表进行置换
+                Collections.shuffle(exp);
                 double result = Expression.eval(exp);
                 if (result == 24) {
-                    return exp;
+                    return (exp).toString();
                 }
             }
         }
-        return null;
+        return "No solution";
     }
 
-
+    public static String solve24(int a, int b, int c, int d) {
+return randSearcher(new int[]{a,b,c,d});
+    }
 }
