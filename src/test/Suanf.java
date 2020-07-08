@@ -47,7 +47,7 @@ public class Suanf {
     public static String solve(int a, int b, int c, int d) {
         List<String> exp = randSearcher(new int[]{a, b, c, d});
         if (exp == null) {
-            return "No solution!";
+            return "暂无";
         }
         StringBuffer buffer = new StringBuffer();
         BinaryTree binaryTree = BinaryTree.Expression(exp);
