@@ -72,12 +72,11 @@ public class BinaryTree {//定义二叉树
 
     }
 
-    public static boolean isNumber(String tok) {//判断是否是数字
-        try {
-            Double.parseDouble(tok);
-            return true;
-        } catch (Exception e) {
-            return false;
+    public static boolean isNumber(String str) {//判断是否是数字
+        char[] a = str.toCharArray();
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] <= '9' && a[i] >= '0') return true;
         }
+        return false;
     }
 }
