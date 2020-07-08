@@ -47,7 +47,7 @@ public class Suanf {
     public static String solve(int a, int b, int c, int d) {
         List<String> exp = randSearcher(new int[]{a, b, c, d});
         if (exp == null) {
-            return "暂无";
+            return "无答案";
         }
         StringBuffer buffer = new StringBuffer();
         BinaryTree binaryTree = BinaryTree.Expression(exp);
@@ -98,12 +98,11 @@ public class Suanf {
         return eval(Arrays.asList(exp));
     }
 
-    public static boolean isNumber(String tok) {
-        try {
-            Double.parseDouble(tok);
-            return true;
-        } catch (Exception e) {
-            return false;
+    public static boolean isNumber(String str) {//判断是否是数字
+        char[] a = str.toCharArray();
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] <= '9' && a[i] >= '0') return true;
         }
+        return false;
     }
 }
