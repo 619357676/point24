@@ -1,4 +1,5 @@
 package test;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
@@ -16,6 +17,7 @@ public class BinaryTree {//定义二叉树
     public BinaryTree(String root) {
         this(root, null, null);
     }
+
     //中序遍历
     void midVisit() {
         System.out.print("(");
@@ -47,10 +49,10 @@ public class BinaryTree {//定义二叉树
         Stack<BinaryTree> S = new Stack<>();
         for (String tok : exp) {
             if (isNumber(tok)) {
-                S.push(new BinaryTree(tok));
+                S.push(new BinaryTree(tok));//把数字压入堆栈顶部
             } else {
-                BinaryTree right = S.peek();
-                S.pop();
+                BinaryTree right = S.peek();//栈顶
+                S.pop();//移除栈顶
                 BinaryTree left = S.peek();
                 S.pop();
                 S.push(new BinaryTree(tok, left, right));
@@ -62,14 +64,9 @@ public class BinaryTree {//定义二叉树
     }
 
     public static void main(String[] args) {
-        BinaryTree left = new BinaryTree("1");
-        BinaryTree right = new BinaryTree("5");
-        BinaryTree tree = new BinaryTree("/", left, right);
-        //tree.midVisit();
+        BinaryTree btree = BinaryTree.Expression(Arrays.asList("1, 2, 3, /, -, 4, *".split("\\s*,\\s*")));
 
-        BinaryTree btree = BinaryTree.Expression(Arrays.asList("5, 1, 5, /, -, 5, *".split("\\s*,\\s*")));
-        // btree.midVisit();//可移植性差 耦合了System.out
-        StringBuffer buffer = new StringBuffer();
+        StringBuffer buffer = new StringBuffer();//对字符串进行修改
         btree.midVisit(buffer);
         System.out.println(buffer);
 
