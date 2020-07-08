@@ -59,7 +59,7 @@ public class BinaryTree {//定义二叉树
             }
         }
 
-        return S.peek();
+        return S.peek();//返回栈顶
 
     }
 
@@ -68,11 +68,11 @@ public class BinaryTree {//定义二叉树
 
         StringBuffer buffer = new StringBuffer();//对字符串进行修改
         btree.midVisit(buffer);
-        System.out.println(buffer);
+        System.out.println(buffer);//依次输出栈顶
 
     }
 
-    public static boolean isNumber(String tok) {
+    public static boolean isNumber(String tok) {//判断是否是数字
         try {
             Double.parseDouble(tok);
             return true;
