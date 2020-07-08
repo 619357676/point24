@@ -13,7 +13,8 @@
     <input type="submit">
     <input type="reset">
 </form>
-你的输入：
+
+<%out.println("你的输入：");%><br/>
 A:<%=request.getParameter("A")%><br/>
 B:<%=request.getParameter("B")%><br/>
 C:<%=request.getParameter("C")%><br/>
@@ -33,6 +34,8 @@ D:<%=request.getParameter("D")%><br/>
     }
 
     String result = test.Suanf.solve(a, b, c, d);
+    out.println("答案:");
+
     out.println(result);
 %>
 </body>
