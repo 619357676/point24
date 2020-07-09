@@ -1,22 +1,18 @@
-package mysql.test;
+package test;
 
-import javax.servlet.*;
         import java.sql.Connection;
         import java.sql.DriverManager;
         import java.sql.ResultSet;
         import java.sql.SQLException;
         import java.sql.Statement;
-import java.io.IOException;
-import java.util.*;
-
 
 public class jdbc{
     public static void main(String[] args) {
         Connection con;
-        String driver =getServletContext().getInitParameter("driver");
-        String url = getServletContext().getInitParameter("url");
-        String user = getServletContext().getInitParameter("username");
-        String password = getServletContext().getInitParameter("password");
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://git.webturing.com:3306/ahstu";
+        String user = "ahstu";
+        String password = "123456";
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url,user,password);
