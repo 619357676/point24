@@ -17,10 +17,10 @@ public class SolveServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        diver = "com.mysql.jdbc.Driver";
-        url = "jdbc:mysql://git.webturing.com:3306/ahstu";
-        userName = "ahstu";
-        password = "123456";
+        diver = getServletContext().getInitParameter("driver");
+        userName = getServletContext().getInitParameter("username");
+        password = getServletContext().getInitParameter("password");
+        url = getServletContext().getInitParameter("url");
 
 
         try {
