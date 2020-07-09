@@ -48,26 +48,20 @@ D:<%=request.getParameter("D")%><br/>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Point24</title>
+    <title>24点游戏</title>
     <style>
 
     </style>
 </head>
 <body>
 <h2>POINT24</h2>
-<form  action="index.jsp" method="post">
+<form  action="/solve" method="post">
     <input type="text" name="A" />
     <input type="text" name="B" />
     <input type="text" name="C" />
     <input type="text" name="D" />
     <input type="submit" value="GO" />
 </form>
-
-<%out.println("你的输入：");%><br/>
-A:<%=request.getParameter("A")%><br/>
-B:<%=request.getParameter("B")%><br/>
-C:<%=request.getParameter("C")%><br/>
-D:<%=request.getParameter("D")%><br/>
 <%=session.getAttribute("result")%>
 </body>
 </html>
