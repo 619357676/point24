@@ -7,14 +7,19 @@ import java.util.Stack;
 
 public class Suanf {
     private static final int COUNT = 5040;
-    final static String[] OP = "+ - * /".split(" ");//正则表达式，将+-*/传入ops数组
+    final static String[] OP = "+ - * /".split(" ");//正则表达式，将+-*/传入op数组
 
     public static void main(String[] args) {
+
         System.out.println(solve(1, 2, 3, 4));//测试数据
+        System.out.println(solve(2, 3, 5, 6));//测试数据
+        System.out.println(solve(7, 7, 8, 8));//测试数据
+        System.out.println(solve(1, 1, 1, 1));//测试数据
     }
-//算法
+
+    //算法
     private static List<String> randSearcher(int[] a) {
-        for (int j = 0; j <64; j++) {//4个数和3个符号共4*4*4种算法
+        for (int j = 0; j < 64; j++) {//4个数和3个符号共4*4*4种算法
             String[] ops = new String[3];
             int x = j / 16;
             int y = j % 16 / 4;
@@ -52,7 +57,7 @@ public class Suanf {
         StringBuffer buffer = new StringBuffer();
         BinaryTree binaryTree = BinaryTree.Expression(exp);
         binaryTree.midVisit(buffer);//中序遍历
-        return buffer.toString().substring(1,buffer.length()-1);//返回字符串的子字符串。
+        return buffer.toString().substring(1, buffer.length() - 1);//返回字符串的子字符串。
     }
 
     public static double eval(List<String> exp) {

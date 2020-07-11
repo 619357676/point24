@@ -9,15 +9,15 @@ import java.sql.*;
 
 @WebServlet("/solve")
 public class SolveServlet extends HttpServlet {
-    private String diver;
-    private String userName;
-    private String password;
-    private String url;
-    private Connection conn;
+    private String diver;//jdbc驱动名
+    private String userName;//用户名
+    private String password;//密码
+    private String url;//数据库链接
+    private Connection conn;//初始化连接
 
     @Override
-    public void init() throws ServletException {
-        diver = getServletContext().getInitParameter("driver");
+    public void init() throws ServletException {//定义一个继承HttpServlet的公有类
+        diver = getServletContext().getInitParameter("driver");////从配置文件中获取JDBC驱动名
         userName = getServletContext().getInitParameter("username");
         password = getServletContext().getInitParameter("password");
         url = getServletContext().getInitParameter("url");
@@ -85,8 +85,8 @@ public class SolveServlet extends HttpServlet {
         String ans = null;
 
         try {
-            Statement stmt = conn.createStatement();//key
-            PreparedStatement ps = conn.prepareStatement("select solution from point24 where numbers=? LIMIT 1");
+            Statement stmt = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("select solution from point24 where numbers=? LIMIT 1");//发送SQL语句到数据库中
             ps.setString(1, key);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
